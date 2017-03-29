@@ -1,1 +1,375 @@
-test
+computer
+    description: Computer
+    width: 64 bits
+    capabilities: smp
+  *-core
+       description: Motherboard
+       physical id: 0
+     *-firmware
+          product: SUNW,4.30.4.b
+          physical id: 0
+          logical name: /proc/device-tree
+     *-memory
+          description: System memory
+          physical id: 1
+          size: 7960MiB
+     *-cpu
+          physical id: 2
+          bus info: cpu@0
+     *-pci:0
+          description: PCI bridge
+          product: PEX 8532  Versatile PCI Express Switch
+          vendor: PLX Technology, Inc.
+          physical id: 100
+          bus info: pci@0000:02:00.0
+          version: aa
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:119 memory:100000-11ffff ioport:0(size=8192) memory:200000-7fffff
+        *-pci:0
+             description: PCI bridge
+             product: PEX 8532  Versatile PCI Express Switch
+             vendor: PLX Technology, Inc.
+             physical id: 1
+             bus info: pci@0000:03:01.0
+             version: aa
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:120 ioport:0(size=4096) memory:200000-2fffff
+           *-network:0 DISABLED
+                description: Ethernet interface
+                product: 82571EB Gigabit Ethernet Controller
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0000:04:00.0
+                logical name: enp4s0f0
+                version: 06
+                serial: [REMOVED]
+                capacity: 1Gbit/s
+                width: 32 bits
+                clock: 33MHz
+                capabilities: pm msi pciexpress bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+                configuration: autonegotiation=on broadcast=yes driver=e1000e driverversion=3.2.6-k firmware=1.2-0 latency=0 link=no multicast=yes port=twisted pair
+                resources: irq:129 memory:200000-21ffff ioport:0(size=32)
+           *-network:1 DISABLED
+                description: Ethernet interface
+                product: 82571EB Gigabit Ethernet Controller
+                vendor: Intel Corporation
+                physical id: 0.1
+                bus info: pci@0000:04:00.1
+                logical name: enp4s0f1
+                version: 06
+                serial: [REMOVED]
+                capacity: 1Gbit/s
+                width: 32 bits
+                clock: 33MHz
+                capabilities: pm msi pciexpress bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+                configuration: autonegotiation=on broadcast=yes driver=e1000e driverversion=3.2.6-k firmware=1.2-0 latency=0 link=no multicast=yes port=twisted pair
+                resources: irq:130 memory:220000-23ffff ioport:20(size=32)
+        *-pci:1
+             description: PCI bridge
+             product: PEX 8532  Versatile PCI Express Switch
+             vendor: PLX Technology, Inc.
+             physical id: 2
+             bus info: pci@0000:03:02.0
+             version: aa
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:121
+        *-pci:2
+             description: PCI bridge
+             product: PEX 8532  Versatile PCI Express Switch
+             vendor: PLX Technology, Inc.
+             physical id: 8
+             bus info: pci@0000:03:08.0
+             version: aa
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:122
+        *-pci:3
+             description: PCI bridge
+             product: PEX 8532  Versatile PCI Express Switch
+             vendor: PLX Technology, Inc.
+             physical id: 9
+             bus info: pci@0000:03:09.0
+             version: aa
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:123 ioport:1000(size=4096) memory:300000-7fffff
+           *-scsi
+                description: SCSI storage controller
+                product: SAS1064ET PCI-Express Fusion-MPT SAS
+                vendor: LSI Logic / Symbios Logic
+                physical id: 0
+                bus info: pci@0000:07:00.0
+                logical name: scsi2
+                version: 02
+                width: 64 bits
+                clock: 33MHz
+                capabilities: scsi pm pciexpress msi msix bus_master cap_list rom
+                configuration: driver=mptsas latency=0
+                resources: irq:19 ioport:1000(size=256) memory:300000-30ffff memory:310000-31ffff memory:400000-7fffff
+              *-disk:0
+                   description: EXT3 volume
+                   product: MAY2073RCSUN72G
+                   vendor: Linux
+                   physical id: 0.0.0
+                   bus info: scsi@2:0.0.0
+                   logical name: /dev/sda
+                   version: 1.0
+                   serial: [REMOVED]
+                   size: 243MiB
+                   capacity: 68GiB
+                   capabilities: 10000rpm journaled extended_attributes large_files recover ext3 ext2 initialized
+                   configuration: ansiversion=4 created=2017-03-22 22:13:08 filesystem=ext3 lastmountpoint=/boot logicalsectorsize=512 modified=2017-03-27 23:11:12 mounted=2017-03-27 23:11:12 sectorsize=512 state=clean
+              *-disk:1
+                   description: EXT4 volume
+                   product: MAY2073RCSUN72G
+                   vendor: Linux
+                   physical id: 0.1.0
+                   bus info: scsi@2:0.1.0
+                   logical name: /dev/sdb
+                   version: 1.0
+                   serial: [REMOVED]
+                   size: 68GiB
+                   capacity: 68GiB
+                   capabilities: 10000rpm journaled extended_attributes large_files huge_files dir_nlink recover 64bit extents ext4 ext2 initialized
+                   configuration: ansiversion=4 created=2017-03-16 16:29:07 filesystem=ext4 lastmountpoint=/usr logicalsectorsize=512 modified=2017-03-27 22:22:31 mounted=2017-03-29 13:47:01 sectorsize=512 state=clean
+              *-disk:2
+                   description: EXT4 volume
+                   product: MAY2073RCSUN72G
+                   vendor: Linux
+                   physical id: 0.2.0
+                   bus info: scsi@2:0.2.0
+                   logical name: /dev/sdc
+                   version: 1.0
+                   serial: [REMOVED]
+                   size: 68GiB
+                   capacity: 68GiB
+                   capabilities: 10000rpm journaled extended_attributes large_files huge_files dir_nlink 64bit extents ext4 ext2 initialized
+                   configuration: ansiversion=4 created=2017-03-16 16:29:11 filesystem=ext4 logicalsectorsize=512 modified=2017-03-27 22:22:31 mounted=2017-03-27 21:59:33 sectorsize=512 state=clean
+              *-disk:3
+                   description: EXT4 volume
+                   product: MAY2073RCSUN72G
+                   vendor: Linux
+                   physical id: 0.3.0
+                   bus info: scsi@2:0.3.0
+                   logical name: /dev/sdd
+                   version: 1.0
+                   serial: [REMOVED]
+                   size: 34GiB
+                   capacity: 68GiB
+                   capabilities: 10000rpm journaled extended_attributes large_files huge_files dir_nlink 64bit extents ext4 ext2 initialized
+                   configuration: ansiversion=4 created=2017-03-16 16:29:15 filesystem=ext4 lastmountpoint=/var logicalsectorsize=512 modified=2017-03-29 13:41:09 mounted=2017-03-29 13:41:09 sectorsize=512 state=clean
+     *-pci:1
+          description: PCI bridge
+          product: PEX 8532  Versatile PCI Express Switch
+          vendor: PLX Technology, Inc.
+          physical id: 101
+          bus info: pci@0001:02:00.0
+          version: aa
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:124 memory:100000-11ffff ioport:0(size=8192) memory:200000-30fffff
+        *-pci:0
+             description: PCI bridge
+             product: PEX 8532  Versatile PCI Express Switch
+             vendor: PLX Technology, Inc.
+             physical id: 1
+             bus info: pci@0001:03:01.0
+             version: aa
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:125 ioport:0(size=4096) memory:200000-2ffffff
+           *-pci:0
+                description: PCI bridge
+                product: 41210 [Lanai] Serial to Parallel PCI Bridge (A-Segment Bridge)
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0001:04:00.0
+                version: 09
+                width: 64 bits
+                clock: 33MHz
+                capabilities: pci pciexpress msi pm pcix normal_decode bus_master cap_list
+                resources: iomemory:2a000000-29ffffff ioport:0(size=4096) memory:200000-2ffffff
+              *-isa
+                   description: ISA bridge
+                   product: M1533/M1535/M1543 PCI to ISA Bridge [Aladdin IV/V/V+]
+                   vendor: ULi Electronics Inc.
+                   physical id: 2
+                   bus info: pci@0001:05:02.0
+                   version: 00
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: isa pm bus_master cap_list
+                   configuration: latency=0
+                   resources: ioport:f010000000(size=65536) memory:0-0
+              *-usb:0
+                   description: USB controller
+                   product: USB 1.1 Controller
+                   vendor: ULi Electronics Inc.
+                   physical id: 5
+                   bus info: pci@0001:05:05.0
+                   version: 03
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pm ohci bus_master cap_list
+                   configuration: driver=ohci-pci latency=64 maxlatency=80
+                   resources: irq:26 memory:1000000-1ffffff
+                 *-usbhost
+                      product: OHCI PCI host controller
+                      vendor: Linux 4.9.0-2-sparc64-smp ohci_hcd
+                      physical id: 1
+                      bus info: usb@1
+                      logical name: usb1
+                      version: 4.09
+                      capabilities: usb-1.10
+                      configuration: driver=hub slots=2 speed=12Mbit/s
+              *-usb:1
+                   description: USB controller
+                   product: USB 1.1 Controller
+                   vendor: ULi Electronics Inc.
+                   physical id: 6
+                   bus info: pci@0001:05:06.0
+                   version: 03
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: pm ohci bus_master cap_list
+                   configuration: driver=ohci-pci latency=64 maxlatency=80
+                   resources: irq:27 memory:2000000-2ffffff
+                 *-usbhost
+                      product: OHCI PCI host controller
+                      vendor: Linux 4.9.0-2-sparc64-smp ohci_hcd
+                      physical id: 1
+                      bus info: usb@2
+                      logical name: usb2
+                      version: 4.09
+                      capabilities: usb-1.10
+                      configuration: driver=hub slots=2 speed=12Mbit/s
+                    *-usb
+                         description: USB hub
+                         product: Standard USB Hub
+                         vendor: Atmel Corp.
+                         physical id: 1
+                         bus info: usb@2:1
+                         version: 3.00
+                         capabilities: usb-1.10
+                         configuration: driver=hub maxpower=64mA slots=4 speed=12Mbit/s
+              *-ide
+                   description: IDE interface
+                   product: M5229 IDE
+                   vendor: ULi Electronics Inc.
+                   physical id: 8
+                   bus info: pci@0001:05:08.0
+                   version: c4
+                   width: 32 bits
+                   clock: 33MHz
+                   capabilities: ide pm bus_master cap_list
+                   configuration: driver=pata_ali latency=64 maxlatency=4 mingnt=2
+                   resources: irq:28 ioport:100(size=8) ioport:118(size=8) ioport:110(size=8) ioport:108(size=8) ioport:120(size=16)
+           *-pci:1
+                description: PCI bridge
+                product: 41210 [Lanai] Serial to Parallel PCI Bridge (B-Segment Bridge)
+                vendor: Intel Corporation
+                physical id: 0.2
+                bus info: pci@0001:04:00.2
+                version: 09
+                width: 64 bits
+                clock: 33MHz
+                capabilities: pci pciexpress msi pm pcix normal_decode bus_master cap_list
+                resources: iomemory:2a000100-2a0000ff
+        *-pci:1
+             description: PCI bridge
+             product: PEX 8532  Versatile PCI Express Switch
+             vendor: PLX Technology, Inc.
+             physical id: 2
+             bus info: pci@0001:03:02.0
+             version: aa
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:126 ioport:1000(size=4096) memory:3000000-30fffff
+           *-network:0
+                description: Ethernet interface
+                product: 82571EB Gigabit Ethernet Controller
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0001:07:00.0
+                logical name: enP1p7s0f0
+                version: 06
+                serial: [REMOVED]
+                size: 1Gbit/s
+                capacity: 1Gbit/s
+                width: 32 bits
+                clock: 33MHz
+                capabilities: pm msi pciexpress bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+                configuration: autonegotiation=on broadcast=yes driver=e1000e driverversion=3.2.6-k duplex=full firmware=1.2-0 ip=[REMOVED] latency=0 link=yes multicast=yes port=twisted pair speed=1Gbit/s
+                resources: irq:131 memory:3000000-301ffff ioport:1000(size=32)
+           *-network:1 DISABLED
+                description: Ethernet interface
+                product: 82571EB Gigabit Ethernet Controller
+                vendor: Intel Corporation
+                physical id: 0.1
+                bus info: pci@0001:07:00.1
+                logical name: enP1p7s0f1
+                version: 06
+                serial: [REMOVED]
+                capacity: 1Gbit/s
+                width: 32 bits
+                clock: 33MHz
+                capabilities: pm msi pciexpress bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+                configuration: autonegotiation=on broadcast=yes driver=e1000e driverversion=3.2.6-k firmware=1.2-0 latency=0 link=no multicast=yes port=twisted pair
+                resources: irq:132 memory:3020000-303ffff ioport:1020(size=32)
+        *-pci:2
+             description: PCI bridge
+             product: PEX 8532  Versatile PCI Express Switch
+             vendor: PLX Technology, Inc.
+             physical id: 8
+             bus info: pci@0001:03:08.0
+             version: aa
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:127
+        *-pci:3
+             description: PCI bridge
+             product: PEX 8532  Versatile PCI Express Switch
+             vendor: PLX Technology, Inc.
+             physical id: 9
+             bus info: pci@0001:03:09.0
+             version: aa
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pm msi pciexpress normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:128
+     *-scsi
+          physical id: 3
+          logical name: scsi0
+          capabilities: emulated
+        *-cdrom UNCLAIMED
+             description: SCSI CD-ROM
+             product: CD-RW  CW-8124
+             vendor: MATSHITA
+             physical id: 0.0.0
+             bus info: scsi@0:0.0.0
+             version: DZ13
+             serial: [REMOVED]
+             capabilities: removable
+             configuration: ansiversion=5

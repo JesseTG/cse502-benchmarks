@@ -1,0 +1,41 @@
+Module                  Size  Used by
+cpufreq_ondemand        7091  0
+cpufreq_conservative     4173  0
+cpufreq_userspace       3403  0
+cpufreq_powersave       1512  0
+ip6table_filter         1897  0
+ip6_tables             15587  1 ip6table_filter
+iptable_filter          1955  0
+sg                     22907  0
+des_generic            19613  0
+flash                   3351  0
+ip_tables              15396  1 iptable_filter
+x_tables               19520  4 ip_tables,iptable_filter,ip6table_filter,ip6_tables
+autofs4                31618  2
+ext4                  553503  4
+crc16                   1591  1 ext4
+jbd2                   82598  1 ext4
+crc32c_generic          2270  6
+fscrypto               15988  1 ext4
+ecb                     2369  0
+mbcache                 5202  5 ext4
+sd_mod                 35182  8
+sr_mod                 15359  0
+cdrom                  49836  1 sr_mod
+ata_generic             3602  0
+ohci_pci                4680  0
+ehci_pci                4847  0
+ohci_hcd               41274  1 ohci_pci
+ehci_hcd               69214  1 ehci_pci
+pata_ali                8903  0
+libata                208551  2 pata_ali,ata_generic
+usbcore               209470  4 ehci_hcd,ohci_pci,ohci_hcd,ehci_pci
+mptsas                 39001  5
+scsi_transport_sas     27012  1 mptsas
+usb_common              3976  1 usbcore
+mptscsih               20206  1 mptsas
+mptbase                62321  2 mptscsih,mptsas
+e1000e                237299  0
+ptp                    11207  1 e1000e
+scsi_mod              196717  7 sd_mod,scsi_transport_sas,mptscsih,libata,sr_mod,sg,mptsas
+pps_core                9729  1 ptp

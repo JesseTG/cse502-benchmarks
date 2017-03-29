@@ -1,0 +1,65 @@
+[0:0:0:0]    cd/dvd  MATSHITA CD-RW  CW-8124   DZ13  /dev/sr0 
+  device_blocked=0
+  iocounterbits=32
+  iodone_cnt=0x2f9
+  ioerr_cnt=0x0
+  iorequest_cnt=0x31f
+  queue_depth=1
+  queue_type=none
+  scsi_level=6
+  state=running
+  timeout=30
+  type=5
+  dir: /sys/bus/scsi/devices/0:0:0:0  [/sys/devices/root/f0287174/pci0001:02/0001:02:00.0/0001:03:01.0/0001:04:00.0/0001:05:08.0/ata1/host0/target0:0:0/0:0:0:0]
+[2:0:0:0]    disk    FUJITSU  MAY2073RCSUN72G  0401  /dev/sda 
+  device_blocked=0
+  iocounterbits=32
+  iodone_cnt=0xa05
+  ioerr_cnt=0x0
+  iorequest_cnt=0xa05
+  queue_depth=64
+  queue_type=simple
+  scsi_level=5
+  state=running
+  timeout=30
+  type=0
+  dir: /sys/bus/scsi/devices/2:0:0:0  [/sys/devices/root/f027e92c/pci0000:02/0000:02:00.0/0000:03:09.0/0000:07:00.0/host2/port-2:0/end_device-2:0/target2:0:0/2:0:0:0]
+[2:0:1:0]    disk    FUJITSU  MAY2073RCSUN72G  0401  /dev/sdb 
+  device_blocked=0
+  iocounterbits=32
+  iodone_cnt=0x9c0
+  ioerr_cnt=0x0
+  iorequest_cnt=0x9c0
+  queue_depth=64
+  queue_type=simple
+  scsi_level=5
+  state=running
+  timeout=30
+  type=0
+  dir: /sys/bus/scsi/devices/2:0:1:0  [/sys/devices/root/f027e92c/pci0000:02/0000:02:00.0/0000:03:09.0/0000:07:00.0/host2/port-2:1/end_device-2:1/target2:0:1/2:0:1:0]
+[2:0:2:0]    disk    FUJITSU  MAY2073RCSUN72G  0501  /dev/sdc 
+  device_blocked=0
+  iocounterbits=32
+  iodone_cnt=0xbf
+  ioerr_cnt=0x0
+  iorequest_cnt=0xbf
+  queue_depth=64
+  queue_type=simple
+  scsi_level=5
+  state=running
+  timeout=30
+  type=0
+  dir: /sys/bus/scsi/devices/2:0:2:0  [/sys/devices/root/f027e92c/pci0000:02/0000:02:00.0/0000:03:09.0/0000:07:00.0/host2/port-2:2/end_device-2:2/target2:0:2/2:0:2:0]
+[2:0:3:0]    disk    FUJITSU  MAY2073RCSUN72G  0501  /dev/sdd 
+  device_blocked=0
+  iocounterbits=32
+  iodone_cnt=0x43f
+  ioerr_cnt=0x0
+  iorequest_cnt=0x43f
+  queue_depth=64
+  queue_type=simple
+  scsi_level=5
+  state=running
+  timeout=30
+  type=0
+  dir: /sys/bus/scsi/devices/2:0:3:0  [/sys/devices/root/f027e92c/pci0000:02/0000:02:00.0/0000:03:09.0/0000:07:00.0/host2/port-2:3/end_device-2:3/target2:0:3/2:0:3:0]
