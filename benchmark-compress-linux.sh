@@ -15,8 +15,8 @@ fi
 cd "$LINUX_KERNEL"
 LINUX_KERNEL_REVISION=$(git rev-parse HEAD)
 TAR_NAME="linux-$LINUX_KERNEL_REVISION.tar"
+echo "Archiving linux kernel to $TAR_NAME"
 git archive --format=tar HEAD --prefix="linux/" --output="../$BASENAME/$TAR_NAME"
-echo "Archived linux kernel to $TAR_NAME"
 cd "$INITIAL_PWD"
 
 echo "Beginning compression of Linux kernel, with $TRIALS trials for each number of CPUs"
