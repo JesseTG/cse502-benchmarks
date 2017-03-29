@@ -29,10 +29,10 @@ for i in $(seq $TOTAL_PROCESSORS); do
       --output="$COMPILE_KERNEL_CSV" \
       --append \
       --format "$TIME_FORMAT" \
-      bash -c "make -j$i"
+      bash -c "make --quiet --jobs=$i"
 
-    git clean -xdf
-  done
-done
+    git clean -xdf;
+  done;
+done;
 
 echo "Done!  See results in $COMPILE_KERNEL_CSV"

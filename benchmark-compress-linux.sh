@@ -34,9 +34,9 @@ for i in $(seq $TOTAL_PROCESSORS); do
       --output="$COMPRESS_KERNEL_CSV" \
       --append \
       --format "$TIME_FORMAT" \
-      bash -c "pbzip2 --compress -9 -b9 --stdout --quiet --keep -p$i \"$TAR_NAME\" > \"$ARCHIVE_NAME\""
-    rm -f "$ARCHIVE_NAME"
-  done
-done
+      bash -c "pbzip2 --compress -9 -b9 --read --stdout --quiet --keep -p$i \"$TAR_NAME\" > \"$ARCHIVE_NAME\""
+    rm -f "$ARCHIVE_NAME";
+  done;
+done;
 
 echo "Done!  See results in $COMPRESS_KERNEL_CSV"
