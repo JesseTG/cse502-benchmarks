@@ -33,7 +33,7 @@ for i in $(seq $TOTAL_PROCESSORS); do
       --output="$UPX_CSV" \
       --append \
       --format "$TIME_FORMAT" \
-      bash -c "ls llvm-bins | xargs --max-lines=1 --max-procs=$i -I '{}' upx --best --ultra-brute ./llvm-bins/{}"
+      bash -c "ls llvm-bins | xargs --max-lines=1 --max-procs=$i -I '{}' upx ./llvm-bins/{}"
 
     echo "      Removing compressed binaries..."
     rm -rf "./llvm-bins"
