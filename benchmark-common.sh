@@ -3,5 +3,5 @@ CSV_HEADINGS="# CPUs, Elapsed time (s), Elapsed time (hh:mm:ss), User-mode time 
 DATE=$(date "+%Y-%m-%d-%H-%M")
 INITIAL_PWD="$(pwd)"
 BASENAME=$(basename "$INITIAL_PWD")
-TRIALS=1
+TRIALS=10
 TOTAL_PROCESSORS=$(grep --count ^processor /proc/cpuinfo)
