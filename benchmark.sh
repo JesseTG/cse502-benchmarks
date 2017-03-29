@@ -8,6 +8,10 @@
 TIME_FORMAT="%e, %E, %U, %S, %P, %I, %O, %W, %F, %R, %X, %p, %D, %K, %c, %w, %x, %C"
 CSV_HEADINGS="Elapsed time (s), Elapsed time (hh:mm:ss), User-mode time (s), Kernel-mode time (s), CPU used (%), File system inputs, File system outputs, # Swaps, # Major page faults, # Minor page faults, Avg. shared text (KB), Avg. unshared stack size (KB), Avg. unshared data (KB), Avg. total memory usage (KB), # Involuntary context switches, # Voluntary context switches, Exit status, Executed command"
 DATE=$(date "+%Y-%m-%d-%H-%M")
+INITIAL_PWD="$(pwd)"
+BASENAME=$(basename "$INITIAL_PWD")
+KERNEL_TRIALS=10
+
 
 TOTAL_PROCESSORS=$(grep -c ^processor /proc/cpuinfo)
 HALF_PROCESSORS=$(( $TOTAL_PROCESSORS / 2 ))
@@ -16,37 +20,37 @@ HALF_PROCESSORS=$(( $TOTAL_PROCESSORS / 2 ))
 ################################################################################
 # Compress the Linux Kernel
 ################################################################################
-PBZIP2_FLAGS="--compress -9 -b9 --stdout --quiet --keep"
-PIGZ_FLAGS="--best --quiet --keep --stdout"
-PIXZ_FLAGS="-9 -k"
-declare -a COMPRESS_KERNEL_METHODS=(
-  "bzip2 --compress --best --stdout --quiet --keep"
-  "pbzip2 $PBZIP2_FLAGS -p2"
-  "pbzip2 $PBZIP2_FLAGS -p$HALF_PROCESSORS"
-  "pbzip2 $PBZIP2_FLAGS -p$TOTAL_PROCESSORS"
-  "gzip --best --quiet --keep --stdout"
-  "pigz $PIGZ_FLAGS --processes 2"
-  "pigz $PIGZ_FLAGS --processes $HALF_PROCESSORS"
-  "pigz $PIGZ_FLAGS --processes $TOTAL_PROCESSORS"
-  "xz --compress -9 --keep --quiet --stdout"
-  "pixz $PIXZ_FLAGS -p 2"
-  "pixz $PIXZ_FLAGS -p $HALF_PROCESSORS"
-  "pixz $PIXZ_FLAGS -p $TOTAL_PROCESSORS"
-)
+COMPRESS_KERNEL_CSV="compress-kernel-$DATE.csv"
 
-git clone --quiet --depth=1 "https://github.com/torvalds/linux.git"
-cd linux
+if [[ ! -d "$LINUX_KERNEL" ]]; then
+  echo "Cloning linux kernel"
+  git clone --quiet --depth=1 "https://github.com/torvalds/linux.git"
+  LINUX_KERNEL="$(readlink -f ./linux)"
+else
+  LINUX_KERNEL=$(readlink -f "$LINUX_KERNEL")
+  echo "Using linux kernel at $LINUX_KERNEL"
+fi
+cd "$LINUX_KERNEL"
 LINUX_KERNEL_REVISION=$(git rev-parse HEAD)
-cd ..
+TAR_NAME="linux-$LINUX_KERNEL_REVISION.tar"
+git archive --format=tar HEAD --prefix="linux/" --output="../$BASENAME/$TAR_NAME"
+echo "Archived linux kernel to $TAR_NAME"
+cd "$INITIAL_PWD"
 
+echo "Beginning compression of Linux kernel, with $KERNEL_TRIALS trials for each number of CPUs"
+echo "$CSV_HEADINGS" > "$COMPRESS_KERNEL_CSV"
+for i in $(seq $TOTAL_PROCESSORS); do
+  ARCHIVE_NAME="linux.tar.bz2.$i"
+  echo "  Compressing to $ARCHIVE_NAME with $i CPUs"
 
-tar --no-auto-compress --create --file=linux-$LINUX_KERNEL_REVISION.tar --exclude=.git --format=gnu --blocking-factor=20 --quoting-style=escape ./linux
-
-echo "$CSV_HEADINGS" > compress-kernel-$DATE.csv
-for compress in "${COMPRESS_KERNEL_METHODS[@]}"; do
-
-  for i in $(seq 1); do
-    $compress linux.tar
+  for j in $(seq $KERNEL_TRIALS); do
+    echo "    Trial $j"
+    /usr/bin/time \
+      --output="$COMPRESS_KERNEL_CSV" \
+      --append \
+      --format "$TIME_FORMAT" \
+      bash -c "pbzip2 --compress -9 -b9 --stdout --quiet --keep -p$i \"$TAR_NAME\" > \"$ARCHIVE_NAME\""
+    rm -f "$ARCHIVE_NAME"
   done
 done
 ################################################################################
