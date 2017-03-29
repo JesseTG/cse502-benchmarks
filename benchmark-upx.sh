@@ -30,6 +30,7 @@ for i in $(seq $TOTAL_PROCESSORS); do
 
     echo "      Compressing binaries..."  # This is the part that's timed
     /usr/bin/time \
+      --quiet \
       --output="$UPX_CSV" \
       --append \
       --format "$TIME_FORMAT" \

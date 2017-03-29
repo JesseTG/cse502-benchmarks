@@ -30,6 +30,7 @@ for i in $(seq $TOTAL_PROCESSORS); do
     echo -n "$i, " >> "$COMPRESS_KERNEL_CSV"
 
     /usr/bin/time \
+      --quiet \
       --output="$COMPRESS_KERNEL_CSV" \
       --append \
       --format "$TIME_FORMAT" \

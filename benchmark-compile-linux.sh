@@ -25,6 +25,7 @@ for i in $(seq $TOTAL_PROCESSORS); do
 
     make tinyconfig
     /usr/bin/time \
+      --quiet \
       --output="$COMPILE_KERNEL_CSV" \
       --append \
       --format "$TIME_FORMAT" \
