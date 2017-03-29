@@ -4,4 +4,4 @@ DATE=$(date "+%Y-%m-%d-%H-%M")
 INITIAL_PWD="$(pwd)"
 BASENAME=$(basename "$INITIAL_PWD")
 TRIALS=10
-TOTAL_PROCESSORS=$(grep --count ^processor /proc/cpuinfo)
+TOTAL_PROCESSORS=$(lscpu --online --extended | grep --count yes)
