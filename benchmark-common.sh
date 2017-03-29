@@ -3,5 +3,5 @@ CSV_HEADINGS="# CPUs, Elapsed time (s), Elapsed time (hh:mm:ss), User-mode time 
 DATE=$(date "+%Y-%m-%d-%H-%M")
 INITIAL_PWD="$(pwd)"
 BASENAME=$(basename "$INITIAL_PWD")
-TRIALS=10
+TRIALS=3
 TOTAL_PROCESSORS=$(lscpu --online --extended | grep --count yes)
